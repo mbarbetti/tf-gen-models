@@ -1,3 +1,8 @@
+# TF models saving
+*.pb
+*.index
+*.data-*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
