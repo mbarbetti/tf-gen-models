@@ -1,7 +1,6 @@
 from tf_gen_models.callbacks.schedulers import GanBaseLrScheduler
 
 class GanPowLrScheduler (GanBaseLrScheduler):
-  """class description"""
   def __init__ (self, decay = 1, step = 1):
     super().__init__()
     self._decay = decay
