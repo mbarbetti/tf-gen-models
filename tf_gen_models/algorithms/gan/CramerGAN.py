@@ -73,6 +73,7 @@ class CramerGAN (GAN):
                                 shape  = (tf.shape(feats_ref_1)[0],) ,
                                 minval = 0.0 ,
                                 maxval = 1.0 ,
+                                dtype  = feats_ref_1.dtype
                               )
     one_shape = tf.ones_like ( tf.shape(feats_ref)[1:] )
     new_shape = tf.concat ( [tf.shape(alpha), one_shape], axis = 0 )

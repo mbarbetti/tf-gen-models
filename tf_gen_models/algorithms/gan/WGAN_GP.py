@@ -43,8 +43,8 @@ class WGAN_GP (GAN):
     feats_ref, w_ref = ref_sample
 
     ## standard WGAN loss
-    D_gen = self._discriminator ( feats_gen )
-    D_ref = self._discriminator ( feats_ref )
+    D_gen = tf.cast ( self._discriminator ( feats_gen ), dtype = feats_gen.dtype )
+    D_ref = tf.cast ( self._discriminator ( feats_ref ), dtype = feats_ref.dtype )
     d_loss = tf.reduce_mean ( w_gen * D_gen - w_ref * D_ref )
     
     ## data interpolation
@@ -52,6 +52,7 @@ class WGAN_GP (GAN):
                                 shape  = (tf.shape(feats_ref)[0],) ,
                                 minval = 0.0 ,
                                 maxval = 1.0 ,
+                                dtype  = feats_ref.dtype
                               )
     one_shape = tf.ones_like ( tf.shape(feats_ref)[1:] )
     new_shape = tf.concat ( [tf.shape(alpha), one_shape], axis = 0 )
@@ -76,8 +77,8 @@ class WGAN_GP (GAN):
     feats_ref, w_ref = ref_sample
 
     ## standard WGAN loss
-    D_gen = self._discriminator ( feats_gen )
-    D_ref = self._discriminator ( feats_ref )
+    D_gen = tf.cast ( self._discriminator ( feats_gen ), dtype = feats_gen.dtype )
+    D_ref = tf.cast ( self._discriminator ( feats_ref ), dtype = feats_ref.dtype )
     g_loss = w_ref * D_ref - w_gen * D_gen
     return tf.reduce_mean (g_loss)
 

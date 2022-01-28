@@ -22,10 +22,10 @@ class BceGAN (GAN):
     feats_ref, w_ref = ref_sample
 
     ## noise injection to stabilize BceGAN training
-    rnd_gen = tf.random.normal ( tf.shape(feats_gen), mean = 0., stddev = 0.05 )
-    rnd_ref = tf.random.normal ( tf.shape(feats_ref), mean = 0., stddev = 0.05 )
-    D_gen = self._discriminator ( feats_gen + rnd_gen )
-    D_ref = self._discriminator ( feats_ref + rnd_ref )
+    rnd_gen = tf.random.normal ( tf.shape(feats_gen), stddev = 0.05, dtype = feats_gen.dtype )
+    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.05, dtype = feats_ref.dtype )
+    D_gen = tf.cast ( self._discriminator ( feats_gen + rnd_gen ), dtype = feats_gen.dtype )
+    D_ref = tf.cast ( self._discriminator ( feats_ref + rnd_ref ), dtype = feats_ref.dtype )
 
     ## loss computation
     true_gen = 0.9
@@ -41,8 +41,8 @@ class BceGAN (GAN):
     feats_ref, w_ref = ref_sample
 
     ## noise injection to stabilize GAN training
-    rnd_ref = tf.random.normal ( tf.shape(feats_ref), mean = 0., stddev = 0.05 )
-    D_ref = self._discriminator ( feats_ref + rnd_ref )
+    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.05, dtype = feats_ref.dtype )
+    D_ref = tf.cast ( self._discriminator ( feats_ref + rnd_ref ), dtype = feats_ref.dtype )
 
     ## split tensors and weights
     batch_size = tf.cast ( tf.shape(feats_ref)[0] / 2, tf.int32 )

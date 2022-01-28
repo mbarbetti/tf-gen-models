@@ -89,11 +89,11 @@ class GAN (tf.keras.Model):
     self._d_updt_per_batch = d_updt_per_batch
 
   def summary (self) -> None:
-    """Print a string summary of the discriminator and generator networks."""
+    """Print a string summary of the generator and discriminator networks."""
     self._generator     . summary()
     self._discriminator . summary()
 
-  @tf.function
+  # @tf.function
   def train_step (self, data) -> dict:
     """Train step for Keras APIs."""
     X, Y, w = self._unpack_data (data)
@@ -125,7 +125,7 @@ class GAN (tf.keras.Model):
              "d_lr"   : self._d_optimizer.lr    ,
              "g_lr"   : self._g_optimizer.lr    }
 
-  @tf.function
+  # @tf.function
   def test_step (self, data) -> dict:
     """Test step for Keras APIs."""
     X, Y, w = self._unpack_data (data)
@@ -215,6 +215,7 @@ class GAN (tf.keras.Model):
       
     return gen_sample, ref_sample
 
+  @tf.function
   def _train_d_step (self, X, Y, w = None) -> None:
     with tf.GradientTape() as tape:
       gen_sample, ref_sample = self._arrange_samples (X, Y, w)
@@ -225,6 +226,7 @@ class GAN (tf.keras.Model):
   def _compute_d_loss (self, gen_sample, ref_sample) -> tf.Tensor:
     return - self._compute_g_loss (gen_sample, ref_sample)
 
+  tf.function
   def _train_g_step (self, X, Y, w = None) -> None:
     with tf.GradientTape() as tape:
       gen_sample, ref_sample = self._arrange_samples (X, Y, w)
@@ -240,8 +242,8 @@ class GAN (tf.keras.Model):
     ## noise injection to stabilize GAN training
     rnd_gen = tf.random.normal ( tf.shape(feats_gen), stddev = 0.05, dtype = feats_gen.dtype )
     rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.05, dtype = feats_ref.dtype )
-    D_gen = self._discriminator ( feats_gen + rnd_gen )
-    D_ref = self._discriminator ( feats_ref + rnd_ref )
+    D_gen = tf.cast ( self._discriminator ( feats_gen + rnd_gen ), dtype = feats_gen.dtype )
+    D_ref = tf.cast ( self._discriminator ( feats_ref + rnd_ref ), dtype = feats_ref.dtype )
 
     ## loss computation
     g_loss = w_ref * tf.math.log ( tf.clip_by_value (D_ref, 1e-12, 1.) ) + \
@@ -253,8 +255,8 @@ class GAN (tf.keras.Model):
     feats_ref, w_ref = ref_sample
 
     ## noise injection to stabilize GAN training
-    rnd_ref = tf.random.normal ( tf.shape(feats_ref), mean = 0., stddev = 0.05 )
-    D_ref = self._discriminator ( feats_ref + rnd_ref )
+    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.05, dtype = feats_ref.dtype )
+    D_ref = tf.cast ( self._discriminator ( feats_ref + rnd_ref ), dtype = feats_ref.dtype )
 
     ## split features and weights
     batch_size = tf.cast ( tf.shape(feats_ref)[0] / 2, tf.int32 )
@@ -303,6 +305,16 @@ class GAN (tf.keras.Model):
   def latent_dim (self) -> int:
     """The dimension of the latent space."""
     return self._latent_dim
+
+  @property
+  def g_optimizer (self) -> tf.keras.optimizers.Optimizer:
+    """The generator optimizer.."""
+    return self._g_optimizer
+
+  @property
+  def d_optimizer (self) -> tf.keras.optimizers.Optimizer:
+    """The discriminator optimizer."""
+    return self._d_optimizer
 
   @property
   def d_lr0 (self) -> float:
