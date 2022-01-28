@@ -23,3 +23,4 @@ class ImageSaver (Callback):
         plt.imshow (gen_img[i,:,:,0], cmap = "gray")
         plt.axis ("off")
       plt.savefig (f"{self._dirname}/{self._name}_ep{epoch+1:04d}.{self._ext}")
+      plt.close()

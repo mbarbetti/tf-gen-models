@@ -93,7 +93,6 @@ class GAN (tf.keras.Model):
     self._generator     . summary()
     self._discriminator . summary()
 
-  # @tf.function
   def train_step (self, data) -> dict:
     """Train step for Keras APIs."""
     X, Y, w = self._unpack_data (data)
@@ -120,12 +119,11 @@ class GAN (tf.keras.Model):
     mse_tracker . update_state (Y, Y_gen, sample_weight = w)
 
     return { "mse"    : mse_tracker.result()    ,
-             "d_loss" : d_loss_tracker.result() , 
              "g_loss" : g_loss_tracker.result() ,
-             "d_lr"   : self._d_optimizer.lr    ,
-             "g_lr"   : self._g_optimizer.lr    }
+             "d_loss" : d_loss_tracker.result() ,
+             "g_lr"   : self._g_optimizer.lr    , 
+             "d_lr"   : self._d_optimizer.lr    }
 
-  # @tf.function
   def test_step (self, data) -> dict:
     """Test step for Keras APIs."""
     X, Y, w = self._unpack_data (data)
@@ -144,10 +142,10 @@ class GAN (tf.keras.Model):
     mse_tracker . update_state (Y, Y_gen, sample_weight = w)
 
     return { "mse"    : mse_tracker.result()    ,
-             "d_loss" : d_loss_tracker.result() , 
              "g_loss" : g_loss_tracker.result() ,
-             "d_lr"   : self._d_optimizer.lr    ,
-             "g_lr"   : self._g_optimizer.lr    }
+             "d_loss" : d_loss_tracker.result() ,
+             "g_lr"   : self._g_optimizer.lr    , 
+             "d_lr"   : self._d_optimizer.lr    }
 
   def _unpack_data (self, data):
     """Unpack data-batch into generator input-output and weights (`None`, if not available)."""

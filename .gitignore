@@ -1,3 +1,8 @@
+# Images produced
+tests/algorithms/*/images/*.png
+notebooks/*/images/*.png
+notebooks/*/*.gif
+
 # TF models saving
 *.pb
 *.index
