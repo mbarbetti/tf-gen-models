@@ -1,6 +1,7 @@
 # Images produced
-tests/algorithms/*/images/*.png
-notebooks/*/images/*.png
+tests/algorithms/*/images/*/*.png
+tests/algorithms/*/images/*.gif
+notebooks/*/images/*/*.png
 notebooks/*/*.gif
 
 # TF models saving
