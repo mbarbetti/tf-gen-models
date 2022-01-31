@@ -119,10 +119,10 @@ class GAN (tf.keras.Model):
     mse_tracker . update_state (Y, Y_gen, sample_weight = w)
 
     return { "mse"    : mse_tracker.result()    ,
-             "g_loss" : g_loss_tracker.result() ,
              "d_loss" : d_loss_tracker.result() ,
-             "g_lr"   : self._g_optimizer.lr    , 
-             "d_lr"   : self._d_optimizer.lr    }
+             "g_loss" : g_loss_tracker.result() ,
+             "d_lr"   : self._d_optimizer.lr    ,
+             "g_lr"   : self._g_optimizer.lr    } 
 
   def test_step (self, data) -> dict:
     """Test step for Keras APIs."""
@@ -142,10 +142,10 @@ class GAN (tf.keras.Model):
     mse_tracker . update_state (Y, Y_gen, sample_weight = w)
 
     return { "mse"    : mse_tracker.result()    ,
-             "g_loss" : g_loss_tracker.result() ,
              "d_loss" : d_loss_tracker.result() ,
-             "g_lr"   : self._g_optimizer.lr    , 
-             "d_lr"   : self._d_optimizer.lr    }
+             "g_loss" : g_loss_tracker.result() ,
+             "d_lr"   : self._d_optimizer.lr    ,
+             "g_lr"   : self._g_optimizer.lr    } 
 
   def _unpack_data (self, data):
     """Unpack data-batch into generator input-output and weights (`None`, if not available)."""
@@ -238,8 +238,8 @@ class GAN (tf.keras.Model):
     feats_ref, w_ref = ref_sample
 
     ## noise injection to stabilize GAN training
-    rnd_gen = tf.random.normal ( tf.shape(feats_gen), stddev = 0.05, dtype = feats_gen.dtype )
-    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.05, dtype = feats_ref.dtype )
+    rnd_gen = tf.random.normal ( tf.shape(feats_gen), stddev = 0.1, dtype = feats_gen.dtype )
+    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.1, dtype = feats_ref.dtype )
     D_gen = tf.cast ( self._discriminator ( feats_gen + rnd_gen ), dtype = feats_gen.dtype )
     D_ref = tf.cast ( self._discriminator ( feats_ref + rnd_ref ), dtype = feats_ref.dtype )
 
@@ -253,7 +253,7 @@ class GAN (tf.keras.Model):
     feats_ref, w_ref = ref_sample
 
     ## noise injection to stabilize GAN training
-    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.05, dtype = feats_ref.dtype )
+    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.1, dtype = feats_ref.dtype )
     D_ref = tf.cast ( self._discriminator ( feats_ref + rnd_ref ), dtype = feats_ref.dtype )
 
     ## split features and weights

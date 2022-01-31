@@ -108,7 +108,7 @@ gan . compile ( g_optimizer = g_opt ,
 ## CALLBACKS
 
 lr_sched  = GanExpLrScheduler ( factor = 0.90, step = 5 )
-img_saver = ImageSaver ( name = "dc-wgan-gp", dirname = "./images/dc-wgan-gp", step = 1, num_images = 1 )
+img_saver = ImageSaver ( name = "dc-wgan-gp", dirname = "./images/dc-wgan-gp", step = 1, look = "multi" )
 mod_saver = ModelSaver ( name = "dc-wgan-gp", dirname = "./models", step = 10 )
 
 ## TRAINING
