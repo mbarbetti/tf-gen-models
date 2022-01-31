@@ -9,7 +9,7 @@ class ImageSaver (Callback):
                  dirname = "./images" , 
                  ext = "png" , 
                  step = 1 ,
-                 num_images = 16 ) -> None:
+                 look = "multi" ) -> None:
     super().__init__()
     self._filename = f"{dirname}/{name}"
 
@@ -18,20 +18,23 @@ class ImageSaver (Callback):
 
     self._ext = ext
     self._step = step
-    self._num_images = num_images
+
+    if look not in ["single", "multi"]:
+      raise ValueError ("`look` should be chosen in ['single', 'multi'].")
+
+    self._look = look
 
   def on_epoch_end (self, epoch, logs = None) -> None:
     if (epoch + 1) % self._step == 0:
-      gen_img = self.model.generate ( batch_size = self._num_images )
-
-      if self._num_images % 2 == 0:
-        rows = self._num_images / 2
-        cols = self._num_images / 2
+      if self._look == "single":
+        rows = 1 ; cols = 1 ; batch_size = 1
       else:
-        rows = 1 ; cols = self._num_images
+        rows = 4 ; cols = 4 ; batch_size = 16
+
+      gen_img = self.model.generate ( batch_size = batch_size )
 
       plt.figure (figsize = (4,4), dpi = 100)
-      for i in range(self._num_images):
+      for i in range(batch_size):
         plt.subplot (rows, cols, i+1)
         plt.imshow (gen_img[i,:,:,0], cmap = "gray")
         plt.axis ("off")
