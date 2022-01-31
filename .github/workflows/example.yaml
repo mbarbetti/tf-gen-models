@@ -1,0 +1,10 @@
+name: example
+
+on: push
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: My first step
+        run: echo This is the first step of my first job.
