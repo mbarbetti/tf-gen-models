@@ -2,7 +2,7 @@
 tests/algorithms/*/images/*/*.png
 tests/algorithms/*/images/*.gif
 notebooks/*/images/*/*.png
-notebooks/*/*.gif
+notebooks/*/images/*.gif
 
 # TF models saving
 *.pb

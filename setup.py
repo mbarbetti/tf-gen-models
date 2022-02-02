@@ -25,7 +25,7 @@ def requirements():
 setup (
         name = "tf-gen-models",
         version = __version__,
-        description  = "tf-gen-models",
+        description  = "Ready to use implementations of state-of-the-art generative models in TensorFlow",
         long_description = readme(),
         long_description_content_type = "text/markdown",
         url = "https://github.com/mbarbetti/tf-gen-models",
