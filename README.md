@@ -16,7 +16,6 @@ tf-gen-models requires:
 * Python (>= 3.7, < 3.10)
 * TensorFlow (>= 2.5)
 * Matplotlib (>= 3.4)
-* NumPy (>= 1.20)
 * Pillow (>= 8.0)
 
 - - -
@@ -28,16 +27,16 @@ The `tf-gen-models` package is built upon TensorFlow 2. See the [TensorFlow inst
 If you already have a working installation of TensorFlow 2 (preferably with the GPU support enabled), the easiest way to install tf-gen-models is using `pip`:
 
 ```shell
-$ pip install tf-gen-models
+pip install tf-gen-models
 ```
 
 ## Available generative models
 
-|                     Algorithms                    |   Implementation   |      Notebooks      |  Trend  |
-|                    :----------:                   |  :--------------:  |     :---------:     | :-----: |
-| <a href="#Generative Aversarial Networks">GAN</a> | :heavy_check_mark: | :hammer_and_wrench: |   :x:   |
-| <a href="#Variational Autoencoder">VAE</a>        |        :x:         |         :x:         |   :x:   |
-| <a href="#Normalizing Flows">Norm Flow</a>        |        :x:         |         :x:         |   :x:   |
+|                 Generative models                 |   Implementation   |      Notebooks      |  Trend  |
+|                :-----------------:                |  :--------------:  |     :---------:     | :-----: |
+| <a href="#Generative Aversarial Networks">GAN</a> | :heavy_check_mark: | :hammer_and_wrench: |         |
+| <a href="#Variational Autoencoder">VAE</a>        |        :x:         |         :x:         |         |
+| <a href="#Normalizing Flows">Norm Flow</a>        |        :x:         |         :x:         |         |
 
 ### Generative Adversarial Networks
 
