@@ -9,7 +9,7 @@ Ready to use implementations of state-of-the-art generative models in TensorFlow
 
 ## Installation
 
-#### Dependencies
+### Dependencies
 
 tf-gen-models requires:
 
@@ -23,7 +23,7 @@ tf-gen-models requires:
 
 The `tf-gen-models` package is built upon TensorFlow 2. See the [TensorFlow install guide](https://www.tensorflow.org/install) for the [pip package](https://www.tensorflow.org/install/pip) while, to enable GPU support, the use [Docker container](https://www.tensorflow.org/install/docker) is recommended. Alternatively, GPU-enabled TensorFlow can be easily installed using the `tensorflow-gpu` package on [conda-forge](https://conda-forge.org/blog/posts/2021-11-03-tensorflow-gpu/).
 
-#### User installation
+### User installation
 
 If you already have a working installation of TensorFlow 2 (preferably with the GPU support enabled), the easiest way to install tf-gen-models is using `pip`:
 
@@ -33,21 +33,29 @@ $ pip install tf-gen-models
 
 ## Available generative models
 
-|                     Algorithms                    |   Implementation   |       Notebook      |  Trend  |
-|                    :----------:                   |  :--------------:  |      :--------:     | :-----: |
+|                     Algorithms                    |   Implementation   |      Notebooks      |  Trend  |
+|                    :----------:                   |  :--------------:  |     :---------:     | :-----: |
 | <a href="#Generative Aversarial Networks">GAN</a> | :heavy_check_mark: | :hammer_and_wrench: |   :x:   |
 | <a href="#Variational Autoencoder">VAE</a>        |        :x:         |         :x:         |   :x:   |
 | <a href="#Normalizing Flows">Norm Flow</a>        |        :x:         |         :x:         |   :x:   |
 
-#### Generative Adversarial Networks
+### Generative Adversarial Networks
 
-...
+|  Algorithms  |   Implementation    |      Notebooks      |                              Paper                              |
+| :----------: |  :--------------:   |     :---------:     |                             :-----:                             |
+|     `GAN`    | :heavy_check_mark:  | :heavy_check_mark:  |  <a href="https://arxiv.org/abs/1406.2661">arXiv:1406.2661</a>  |
+|   `BceGAN`   | :hammer_and_wrench: |         :x:         |                                                                 |
+|    `WGAN`    | :heavy_check_mark:  | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1701.07875">arXiv:1701.07875</a> |
+|   `WGAN_GP`  | :heavy_check_mark:  | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1704.00028">arXiv:1704.00028</a> |
+| `CramerGAN`  | :hammer_and_wrench: |         :x:         | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
 
 ### Variational Autoencoder
 
-#### Normalizing Flows
+_Planned for release v0.2.0_
 
-...
+### Normalizing Flows
+
+_Planned for release v0.2.0_
 
 ## Jupyter notebooks
 
