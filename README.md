@@ -59,7 +59,7 @@ _Planned for release v0.2.0_
 
 ## Jupyter notebooks
 
-bla bla bla
+* MNIST generation with GANs [[GAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-GAN.ipynb)] [[WGAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-WGAN.ipynb)] [[WGAN-GP](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-WGAN-GP.ipynb)]
 
 ## License
 
