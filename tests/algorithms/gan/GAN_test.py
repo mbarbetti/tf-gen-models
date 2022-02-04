@@ -7,7 +7,7 @@ import tensorflow as tf
 from datetime import datetime
 from tensorflow.keras import Sequential, layers
 from tf_gen_models.algorithms.gan import GAN
-from tf_gen_models.callbacks import GanExpLrScheduler, ImageSaver, ModelSaver
+from tf_gen_models.callbacks import GanExpLrScheduler, ImageSaver
 
 
 # +---------------------------------+
@@ -116,7 +116,6 @@ gan . compile ( g_optimizer = g_opt ,
 
 lr_sched  = GanExpLrScheduler ( factor = 0.90, step = 5 )
 img_saver = ImageSaver ( name = "dc-gan", dirname = "./images/dc-gan", step = 1, look = "multi" )
-# mod_saver = ModelSaver ( name = "dc-gan", dirname = "./models", step = 10 )
 
 ## TRAINING
 
