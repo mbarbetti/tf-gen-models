@@ -6,7 +6,7 @@ import tensorflow as tf
 
 from datetime import datetime
 from tensorflow.keras import Sequential, layers
-from tf_gen_models.algorithms.gan import WGAN_GP
+from tf_gen_models.algorithms.gan import CramerGAN
 from tf_gen_models.callbacks import GanExpLrScheduler, ImageSaver
 
 
@@ -92,13 +92,13 @@ discriminator . add ( layers.BatchNormalization ( axis = 1 ) )
 discriminator . add ( layers.LeakyReLU ( alpha = 0.2 ) )
 
 discriminator . add ( layers.Flatten() )
-discriminator . add ( layers.Dense ( 1, activation = "linear" ) )
+discriminator . add ( layers.Dense ( 256, activation = "linear" ) )
 
 # +--------------------------+
 # |    Training procedure    |
 # +--------------------------+
 
-gan = WGAN_GP (generator, discriminator, latent_dim = LATENT_DIM)
+gan = CramerGAN (generator, discriminator, latent_dim = LATENT_DIM)
 
 gan . summary()
 
@@ -116,7 +116,7 @@ gan . compile ( g_optimizer = g_opt ,
 ## CALLBACKS
 
 lr_sched  = GanExpLrScheduler ( factor = 0.90, step = 5 )
-img_saver = ImageSaver ( name = "dc-wgan-gp", dirname = "./images/dc-wgan-gp", step = 1, look = "multi" )
+img_saver = ImageSaver ( name = "dc-cramer-gan", dirname = "./images/dc-cramer-gan", step = 1, look = "multi" )
 
 ## TRAINING
 
@@ -144,9 +144,9 @@ print (f"Model training completed in {timestamp}.")
 # |    Create a GIF    |
 # +--------------------+
 
-anim_file = "./images/dc-wgan-gp.gif"
+anim_file = "./images/dc-cramer-gan.gif"
 
-filenames = glob.glob ("./images/dc-wgan-gp/dc-wgan-gp_ep*.png")
+filenames = glob.glob ("./images/dc-cramer-gan/dc-cramer-gan_ep*.png")
 filenames = sorted (filenames)
 
 img , *imgs = [ PIL.Image.open(f) for f in filenames ]
