@@ -7,7 +7,7 @@ import tensorflow as tf
 from datetime import datetime
 from tensorflow.keras import Sequential, layers
 from tf_gen_models.algorithms.gan import WGAN_GP
-from tf_gen_models.callbacks import GanExpLrScheduler, ImageSaver, ModelSaver
+from tf_gen_models.callbacks import GanExpLrScheduler, ImageSaver
 
 
 # +---------------------------------+
@@ -61,30 +61,38 @@ generator . add ( layers.LeakyReLU() )
 
 generator . add ( layers.Reshape ( (7, 7, 256) ) )
 
-generator . add ( layers.Conv2DTranspose ( 128, (5, 5), strides = (1, 1), padding = "same", use_bias = False ) )
-generator . add ( layers.BatchNormalization() )
+generator . add ( layers.Conv2DTranspose ( 256, (3, 3), strides = (1, 1), padding = "valid" ) )
+generator . add ( layers.BatchNormalization ( axis = 1 ) )
 generator . add ( layers.LeakyReLU() )
 
-generator . add ( layers.Conv2DTranspose ( 64, (5, 5), strides = (2, 2), padding = "same", use_bias = False ) )
-generator . add ( layers.BatchNormalization() )
+generator . add ( layers.Conv2DTranspose ( 128, (4, 4), strides = (2, 2), padding = "valid" ) )
+generator . add ( layers.BatchNormalization ( axis = 1 ) )
 generator . add ( layers.LeakyReLU() )
 
-generator . add ( layers.Conv2DTranspose ( 1, (5, 5), strides = (2, 2), padding = "same", use_bias = False, activation = "tanh" ) )
+generator . add ( layers.Conv2DTranspose ( 64, (5, 5), strides = (1, 1), padding = "valid" ) )
+generator . add ( layers.BatchNormalization ( axis = 1 ) )
+generator . add ( layers.LeakyReLU() )
+
+generator . add ( layers.Conv2DTranspose ( 1, (5, 5), strides = (1, 1), padding = "valid", activation = "tanh" ) )
 
 ## DISCRIMINATOR
 
 discriminator = Sequential ( name = "discriminator" )
     
-discriminator . add ( layers.Conv2D ( 64, (5, 5), strides = (2, 2), padding = "same", input_shape = [28, 28, 1] ) )
-discriminator . add ( layers.LeakyReLU() )
-discriminator . add ( layers.Dropout (0.3) )
+discriminator . add ( layers.Conv2D ( 32, (4, 4), strides = (2, 2), padding = "same", input_shape = [28, 28, 1] ) )
+discriminator . add ( layers.BatchNormalization ( axis = 1 ) )
+discriminator . add ( layers.LeakyReLU ( alpha = 0.2 ) )
 
-discriminator . add ( layers.Conv2D ( 128, (5, 5), strides = (2, 2), padding = "same" ) )
-discriminator . add ( layers.LeakyReLU() )
-discriminator . add ( layers.Dropout (0.3) )
+discriminator . add ( layers.Conv2D ( 64, (4, 4), strides = (2, 2), padding = "same" ) )
+discriminator . add ( layers.BatchNormalization ( axis = 1 ) )
+discriminator . add ( layers.LeakyReLU ( alpha = 0.2 ) )
+
+discriminator . add ( layers.Conv2D ( 128, (4, 4), strides = (2, 2), padding = "same" ) )
+discriminator . add ( layers.BatchNormalization ( axis = 1 ) )
+discriminator . add ( layers.LeakyReLU ( alpha = 0.2 ) )
 
 discriminator . add ( layers.Flatten() )
-discriminator . add ( layers.Dense ( 1, activation = "tanh" ) )
+discriminator . add ( layers.Dense ( 1, activation = "linear" ) )
 
 # +--------------------------+
 # |    Training procedure    |
@@ -96,20 +104,20 @@ gan . summary()
 
 ## OPTIMIZERS
 
-g_opt = tf.keras.optimizers.Adam ( 1e-5 )
-d_opt = tf.keras.optimizers.Adam ( 1e-5 )
+g_opt = tf.keras.optimizers.Adam ( 1e-4, beta_1 = 0.0, beta_2 = 0.9 )
+d_opt = tf.keras.optimizers.Adam ( 1e-4, beta_1 = 0.0, beta_2 = 0.9 )
 
 gan . compile ( g_optimizer = g_opt , 
                 d_optimizer = d_opt ,
                 g_updt_per_batch = 1 ,
-                d_updt_per_batch = 3 ,
-                grad_penalty = 1.0 )
+                d_updt_per_batch = 5 ,
+                grad_penalty = 10.0 )
 
 ## CALLBACKS
 
 lr_sched  = GanExpLrScheduler ( factor = 0.90, step = 5 )
 img_saver = ImageSaver ( name = "dc-wgan-gp", dirname = "./images/dc-wgan-gp", step = 1, look = "multi" )
-mod_saver = ModelSaver ( name = "dc-wgan-gp", dirname = "./models", step = 10 )
+# mod_saver = ModelSaver ( name = "dc-wgan-gp", dirname = "./models", step = 10 )
 
 ## TRAINING
 
@@ -122,7 +130,7 @@ train = gan . fit ( train_ds ,
                     epochs = EPOCHS ,
                     steps_per_epoch = STEPS_PER_EPOCH ,
                     validation_data = test_ds ,
-                    callbacks = [ lr_sched, img_saver, mod_saver ] ,
+                    callbacks = [ lr_sched, img_saver ] ,
                     verbose = 1 )
 
 stop = datetime.now()
