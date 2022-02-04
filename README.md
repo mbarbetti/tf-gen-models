@@ -48,7 +48,7 @@ pip install tf-gen-models
 |   `WGAN_GP`  | :heavy_check_mark:  | :hammer_and_wrench: | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1704.00028">arXiv:1704.00028</a> |
 | `CramerGAN`  | :hammer_and_wrench: | :hammer_and_wrench: |         :x:         | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
 
-*Referring to the conditional form of GANs proposed in [arXiv:1411.1784](https://arxiv.org/abs/1411.1784).
+*Referring to the **conditional version** of GANs proposed in [arXiv:1411.1784](https://arxiv.org/abs/1411.1784).
 
 ### Variational Autoencoder
 
