@@ -43,10 +43,10 @@ pip install tf-gen-models
 |  Algorithms  |   Implementation    |     Conditions*     |      Notebooks      |                              Paper                              |
 | :----------: |  :--------------:   |    :-----------:    |     :---------:     |                             :-----:                             |
 |     `GAN`    | :heavy_check_mark:  | :hammer_and_wrench: | :heavy_check_mark:  |  <a href="https://arxiv.org/abs/1406.2661">arXiv:1406.2661</a>  |
-|   `BceGAN`   | :hammer_and_wrench: | :hammer_and_wrench: |         :x:         |                                                                 |
-|    `WGAN`    | :heavy_check_mark:  | :hammer_and_wrench: | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1701.07875">arXiv:1701.07875</a> |
-|   `WGAN_GP`  | :heavy_check_mark:  | :hammer_and_wrench: | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1704.00028">arXiv:1704.00028</a> |
-| `CramerGAN`  | :hammer_and_wrench: | :hammer_and_wrench: | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
+|   `BceGAN`   | :hammer_and_wrench: |         :x:         |         :x:         |                                                                 |
+|    `WGAN`    | :heavy_check_mark:  |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1701.07875">arXiv:1701.07875</a> |
+|   `WGAN_GP`  | :heavy_check_mark:  |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1704.00028">arXiv:1704.00028</a> |
+| `CramerGAN`  | :heavy_check_mark:  |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
 
 *Referring to the **conditional version** of GANs proposed in [arXiv:1411.1784](https://arxiv.org/abs/1411.1784).
 
