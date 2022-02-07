@@ -32,21 +32,21 @@ pip install tf-gen-models
 
 ## Available generative models
 
-|                 Generative models                 |   Implementation   |      Notebooks      |  Trend  |
-|                :-----------------:                |  :--------------:  |     :---------:     | :-----: |
-| <a href="#Generative Aversarial Networks">GAN</a> | :heavy_check_mark: | :hammer_and_wrench: |         |
-| <a href="#Variational Autoencoder">VAE</a>        |        :x:         |         :x:         |         |
-| <a href="#Normalizing Flows">Norm Flow</a>        |        :x:         |         :x:         |         |
+|                 Generative models                 |   Implementation   |      Notebooks      |  Trends  |
+|                :-----------------:                |  :--------------:  |     :---------:     | :------: |
+| <a href="#Generative Aversarial Networks">GAN</a> | :heavy_check_mark: | :hammer_and_wrench: |          |
+| <a href="#Variational Autoencoder">VAE</a>        |        :x:         |         :x:         |          |
+| <a href="#Normalizing Flows">Norm Flow</a>        |        :x:         |         :x:         |          |
 
 ### Generative Adversarial Networks
 
-|  Algorithms  |   Implementation    |     Conditions*     |      Notebooks      |                              Paper                              |
-| :----------: |  :--------------:   |    :-----------:    |     :---------:     |                             :-----:                             |
-|     `GAN`    | :heavy_check_mark:  | :hammer_and_wrench: | :heavy_check_mark:  |  <a href="https://arxiv.org/abs/1406.2661">arXiv:1406.2661</a>  |
-|   `BceGAN`   | :hammer_and_wrench: |         :x:         |         :x:         |                                                                 |
-|    `WGAN`    | :heavy_check_mark:  |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1701.07875">arXiv:1701.07875</a> |
-|   `WGAN_GP`  | :heavy_check_mark:  |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1704.00028">arXiv:1704.00028</a> |
-| `CramerGAN`  | :heavy_check_mark:  |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
+|  Algorithms  |   Implementation   |     Conditions*     |      Notebooks      |                              Paper                              |
+| :----------: |  :--------------:  |    :-----------:    |     :---------:     |                             :-----:                             |
+|     `GAN`    | :heavy_check_mark: | :hammer_and_wrench: | :heavy_check_mark:  |  <a href="https://arxiv.org/abs/1406.2661">arXiv:1406.2661</a>  |
+|   `BceGAN`   | :heavy_check_mark: |         :x:         | :hammer_and_wrench: |                                                                 |
+|    `WGAN`    | :heavy_check_mark: |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1701.07875">arXiv:1701.07875</a> |
+|   `WGAN_GP`  | :heavy_check_mark: |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1704.00028">arXiv:1704.00028</a> |
+| `CramerGAN`  | :heavy_check_mark: |         :x:         | :hammer_and_wrench: | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
 
 *Referring to the **conditional version** of GANs proposed in [arXiv:1411.1784](https://arxiv.org/abs/1411.1784).
 
@@ -60,7 +60,7 @@ _Planned for release v0.2.0_
 
 ## Jupyter notebooks
 
-* MNIST generation with GANs [[GAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-GAN.ipynb)] [[WGAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-WGAN.ipynb)] [[WGAN-GP](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-WGAN-GP.ipynb)] [[CramerGAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-CramerGAN.ipynb)]
+* MNIST generation with GANs [[GAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-GAN.ipynb)] [[BceGAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-BceGAN.ipynb)] [[WGAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-WGAN.ipynb)] [[WGAN-GP](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-WGAN-GP.ipynb)] [[CramerGAN](https://github.com/mbarbetti/tf-gen-models/blob/main/notebooks/gan/0_MNIST_gen_DC-CramerGAN.ipynb)]
 
 ## License
 
