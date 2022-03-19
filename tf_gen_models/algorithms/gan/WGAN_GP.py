@@ -85,7 +85,7 @@ class WGAN_GP (GAN):
   def _compute_threshold (self, ref_sample) -> tf.Tensor:
     _ , w_ref = ref_sample
     th_loss = tf.zeros_like (w_ref)
-    return tf.reduce_mean (th_loss)
+    return tf.reduce_sum (th_loss)
 
   @property
   def discriminator (self) -> tf.keras.Sequential:

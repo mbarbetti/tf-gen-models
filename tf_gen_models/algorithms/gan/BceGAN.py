@@ -50,12 +50,12 @@ class BceGAN (GAN):
     w_ref_1, w_ref_2 = w_ref[:batch_size], w_ref[batch_size:batch_size*2]
 
     ## threshold loss computation
-    true_gen = 0.9
-    true_ref = 0.1
-    th_loss = w_ref_1 * true_gen       * tf.math.log ( tf.clip_by_value ( D_ref_1     , 1e-12 , 1. ) ) + \
-              w_ref_1 * (1 - true_gen) * tf.math.log ( tf.clip_by_value ( 1 - D_ref_1 , 1e-12 , 1. ) ) + \
-              w_ref_2 * true_ref       * tf.math.log ( tf.clip_by_value ( D_ref_2     , 1e-12 , 1. ) ) + \
-              w_ref_2 * (1 - true_ref) * tf.math.log ( tf.clip_by_value ( 1 - D_ref_2 , 1e-12 , 1. ) ) 
+    k_gen = 0.1
+    k_ref = 0.9
+    th_loss = w_ref_1 * k_gen       * tf.math.log ( tf.clip_by_value ( D_ref_1     , 1e-12 , 1. ) ) + \
+              w_ref_1 * (1 - k_gen) * tf.math.log ( tf.clip_by_value ( 1 - D_ref_1 , 1e-12 , 1. ) ) + \
+              w_ref_2 * k_ref       * tf.math.log ( tf.clip_by_value ( D_ref_2     , 1e-12 , 1. ) ) + \
+              w_ref_2 * (1 - k_ref) * tf.math.log ( tf.clip_by_value ( 1 - D_ref_2 , 1e-12 , 1. ) ) 
     return tf.reduce_mean (th_loss)
 
   @property
