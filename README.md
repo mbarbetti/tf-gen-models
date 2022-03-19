@@ -43,10 +43,10 @@ pip install tf-gen-models
 | Algorithms | Implementation | Conditioning*| Notebooks |                              Paper                              |
 |:----------:|:--------------:|:------------:|:---------:|:---------------------------------------------------------------:|
 |    `GAN`   |      ✔️       |      🛠️      |    ✔️    |  <a href="https://arxiv.org/abs/1406.2661">arXiv:1406.2661</a>  |
-|  `BceGAN`  |      ✔️       |      ❌      |    🛠️    |                                                                 |
+|  `BceGAN`  |      ✔️       |      ❌      |    ✔️    |                                                                 |
 |   `WGAN`   |      ✔️       |      ❌      |    ✔️    | <a href="https://arxiv.org/abs/1701.07875">arXiv:1701.07875</a> |
 |  `WGAN_GP` |      ✔️       |      ❌      |    ✔️    | <a href="https://arxiv.org/abs/1704.00028">arXiv:1704.00028</a> |
-| `CramerGAN`|      ✔️       |      ❌      |    🛠️    | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
+| `CramerGAN`|      ✔️       |      ❌      |    ✔️    | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
 
 *Referring to the **conditional version** of GANs proposed in [arXiv:1411.1784](https://arxiv.org/abs/1411.1784).
 
