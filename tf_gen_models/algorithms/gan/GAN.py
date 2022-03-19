@@ -147,7 +147,7 @@ class GAN (tf.keras.Model):
              "d_lr"   : self._d_optimizer.lr    ,
              "g_lr"   : self._g_optimizer.lr    } 
 
-  def _unpack_data (self, data):
+  def _unpack_data (self, data) -> tuple:
     """Unpack data-batch into generator input-output and weights (`None`, if not available)."""
     ## STANDARD GAN
     if self._input_shape is None:

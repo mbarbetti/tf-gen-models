@@ -8,11 +8,11 @@ class CheckpointPrinter (Callback):
     super().__init__()
     self._step = step
 
-  def on_train_begin (self, logs = None):
+  def on_train_begin (self, logs = None) -> None:
     self._start = datetime.now()
     print (f"{self._start} | Begin of the training procedure")
 
-  def on_train_end (self, logs = None):
+  def on_train_end (self, logs = None) -> None:
     stop = datetime.now()
     timestamp = str(stop - self._start) . split (".") [0]   # HH:MM:SS
     timestamp = timestamp . split (":")   # [HH, MM, SS]
