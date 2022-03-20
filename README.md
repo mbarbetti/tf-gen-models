@@ -6,6 +6,7 @@
   <em>Ready to use implementations of state-of-the-art generative models in TensorFlow</em>
 </h3>
 
+[![PyPI license](https://img.shields.io/pypi/l/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
 [![PyPI version shields.io](https://img.shields.io/pypi/v/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
 [![PyPI status](https://img.shields.io/pypi/status/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
