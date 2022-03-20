@@ -9,7 +9,9 @@
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
 [![PyPI version shields.io](https://img.shields.io/pypi/v/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
 [![PyPI status](https://img.shields.io/pypi/status/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
+[![Downloads](https://pepy.tech/badge/tf-gen-models)](https://pepy.tech/project/tf-gen-models)
 [![DOI](https://zenodo.org/badge/451160183.svg)](https://zenodo.org/badge/latestdoi/451160183)
+[![GitHub stars](https://img.shields.io/github/stars/mbarbetti/tf-gen-models?style=social)](https://github.com/mbarbetti/tf-gen-models)
 
 ## Installation
 
