@@ -1,11 +1,15 @@
-# Generative Models in TensorFlow
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mbarbetti/tf-gen-models/main/.github/images/tfg-logo.png" width="800"/>
+</div>
+
+<h3 align="center">
+  <em>Ready to use implementations of state-of-the-art generative models in TensorFlow</em>
+</h3>
 
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
 [![PyPI version shields.io](https://img.shields.io/pypi/v/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
 [![PyPI status](https://img.shields.io/pypi/status/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
 [![DOI](https://zenodo.org/badge/451160183.svg)](https://zenodo.org/badge/latestdoi/451160183)
-
-Ready to use implementations of state-of-the-art generative models in TensorFlow.
 
 ## Installation
 
