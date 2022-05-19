@@ -6,13 +6,13 @@
   <em>Ready to use implementations of state-of-the-art generative models in TensorFlow</em>
 </h3>
 
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
-[![PyPI version shields.io](https://img.shields.io/pypi/v/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
-[![PyPI status](https://img.shields.io/pypi/status/tf-gen-models.svg)](https://pypi.python.org/pypi/tf-gen-models/)
-[![DOI](https://zenodo.org/badge/451160183.svg)](https://zenodo.org/badge/latestdoi/451160183)
-[![GitHub issues](https://img.shields.io/github/issues/mbarbetti/tf-gen-models.svg)](https://github.com/mbarbetti/tf-gen-models/issues/)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/mbarbetti/tf-gen-models.svg)](https://github.com/mbarbetti/tf-gen-models/pulls/)
-[![GitHub stars](https://img.shields.io/github/stars/mbarbetti/tf-gen-models?style=social)](https://github.com/mbarbetti/tf-gen-models)
+[![](https://img.shields.io/pypi/pyversions/tf-gen-models)](https://pypi.python.org/pypi/tf-gen-models/)
+[![](https://img.shields.io/pypi/v/tf-gen-models)](https://pypi.python.org/pypi/tf-gen-models/)
+[![](https://img.shields.io/pypi/status/tf-gen-models)](https://pypi.python.org/pypi/tf-gen-models/)
+[![](https://img.shields.io/pypi/dm/tf-gen-models)](https://pypi.python.org/pypi/tf-gen-models/)
+[![](https://badgen.net/github/forks/mbarbetti/tf-gen-models)](https://GitHub.com/mbarbetti/tf-gen-models/network/)
+[![](https://img.shields.io/github/stars/mbarbetti/tf-gen-models)](https://github.com/mbarbetti/tf-gen-models)
+[![](https://zenodo.org/badge/451160183.svg)](https://zenodo.org/badge/latestdoi/451160183)
 
 ## Installation
 
