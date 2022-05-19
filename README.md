@@ -11,6 +11,10 @@
   <a href="https://pypi.python.org/pypi/tf-gen-models/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/tf-gen-models"></a>
   <a href="https://pypi.python.org/pypi/tf-gen-models/"><img alt="PyPI - Status" src="https://img.shields.io/pypi/status/tf-gen-models"></a>
   <a href="https://pypi.python.org/pypi/tf-gen-models/"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/tf-gen-models"></a>
+  <!--
+  <a href="https://github.com/mbarbetti/tf-gen-models/issues"><img alt="GitHub - Issues" src="https://img.shields.io/github/issues/mbarbetti/tf-gen-models"></a>
+  <a href="https://github.com/mbarbetti/tf-gen-models/pulls"><img alt="GitHub - Pull-requests" src="https://img.shields.io/github/issues-pr/mbarbetti/tf-gen-models"></a>
+  -->
   <a href="https://github.com/mbarbetti/tf-gen-models/network/members"><img alt="GitHub - Forks" src="https://badgen.net/github/forks/mbarbetti/tf-gen-models"></a>
   <a href="https://github.com/mbarbetti/tf-gen-models/stargazers/"><img alt="GitHub - Stars" src="https://img.shields.io/github/stars/mbarbetti/tf-gen-models"></a>
   <a href="https://zenodo.org/badge/latestdoi/451160183"><img alt="DOI" src="https://zenodo.org/badge/451160183.svg"></a>
