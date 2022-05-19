@@ -1,18 +1,20 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/mbarbetti/tf-gen-models/main/.github/images/tfg-logo.png" width="800"/>
+  <img alt="tf-gen-models logo" src="https://raw.githubusercontent.com/mbarbetti/tf-gen-models/main/.github/images/tfg-logo.png" width="800"/>
 </div>
 
 <h3 align="center">
   <em>Ready to use implementations of state-of-the-art generative models in TensorFlow</em>
 </h3>
 
-[![](https://img.shields.io/pypi/pyversions/tf-gen-models)](https://pypi.python.org/pypi/tf-gen-models/)
-[![](https://img.shields.io/pypi/v/tf-gen-models)](https://pypi.python.org/pypi/tf-gen-models/)
-[![](https://img.shields.io/pypi/status/tf-gen-models)](https://pypi.python.org/pypi/tf-gen-models/)
-[![](https://img.shields.io/pypi/dm/tf-gen-models)](https://pypi.python.org/pypi/tf-gen-models/)
-[![](https://badgen.net/github/forks/mbarbetti/tf-gen-models)](https://GitHub.com/mbarbetti/tf-gen-models/network/)
-[![](https://img.shields.io/github/stars/mbarbetti/tf-gen-models)](https://github.com/mbarbetti/tf-gen-models)
-[![](https://zenodo.org/badge/451160183.svg)](https://zenodo.org/badge/latestdoi/451160183)
+<p align="center">
+  <a href="https://pypi.python.org/pypi/tf-gen-models/"><img alt="PyPI - Python versions" src="https://img.shields.io/pypi/pyversions/tf-gen-models"></a>
+  <a href="https://pypi.python.org/pypi/tf-gen-models/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/tf-gen-models"></a>
+  <a href="https://pypi.python.org/pypi/tf-gen-models/"><img alt="PyPI - Status" src="https://img.shields.io/pypi/status/tf-gen-models"></a>
+  <a href="https://pypi.python.org/pypi/tf-gen-models/"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/tf-gen-models"></a>
+  <a href="https://github.com/mbarbetti/tf-gen-models/network/members"><img alt="GitHub - Forks" src="https://badgen.net/github/forks/mbarbetti/tf-gen-models"></a>
+  <a href="https://github.com/mbarbetti/tf-gen-models/stargazers/"><img alt="GitHub - Stars" src="https://img.shields.io/github/stars/mbarbetti/tf-gen-models"></a>
+  <a href="https://zenodo.org/badge/latestdoi/451160183"><img alt="DOI" src="https://zenodo.org/badge/451160183.svg"></a>
+</p>
 
 ## Installation
 
