@@ -60,6 +60,7 @@ pip install tf-gen-models
 |   `WGAN`   |      ✔️       |      ❌      |    ✔️    | <a href="https://arxiv.org/abs/1701.07875">arXiv:1701.07875</a> |
 |  `WGAN_GP` |      ✔️       |      ❌      |    ✔️    | <a href="https://arxiv.org/abs/1704.00028">arXiv:1704.00028</a> |
 | `CramerGAN`|      ✔️       |      ❌      |    ✔️    | <a href="https://arxiv.org/abs/1705.10743">arXiv:1705.10743</a> |
+| `WGAN_ALP` |      ✔️       |      ❌      |    🛠️    | <a href="https://arxiv.org/abs/1907.05681">arXiv:1907.05681</a> |
 
 *Referring to the **conditional version** of GANs proposed in [arXiv:1411.1784](https://arxiv.org/abs/1411.1784).
 
