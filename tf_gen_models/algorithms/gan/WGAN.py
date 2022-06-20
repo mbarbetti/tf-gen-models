@@ -29,7 +29,8 @@ class WGAN (GAN):
 
     ## data-type control
     if not isinstance (clip_param, float):
-      raise TypeError ("The clipping parameter should be a float.")
+      if isinstance (clip_param, int): float (clip_param)
+      else: raise TypeError ("The clipping parameter should be a float.")
 
     ## data-value control
     if clip_param <= 0:
@@ -45,19 +46,19 @@ class WGAN (GAN):
 
   def _compute_g_loss (self, gen_sample, ref_sample) -> tf.Tensor:
     ## extract input tensors and weights
-    feats_gen, w_gen = gen_sample
-    feats_ref, w_ref = ref_sample
+    input_gen, w_gen = gen_sample
+    input_ref, w_ref = ref_sample
 
     ## standard WGAN loss
-    D_gen = tf.cast ( self._discriminator ( feats_gen ), dtype = feats_gen.dtype )
-    D_ref = tf.cast ( self._discriminator ( feats_ref ), dtype = feats_ref.dtype )
+    D_gen = tf.cast ( self._discriminator (input_gen), dtype = input_gen.dtype )
+    D_ref = tf.cast ( self._discriminator (input_ref), dtype = input_ref.dtype )
     g_loss = w_ref * D_ref - w_gen * D_gen
-    return tf.reduce_mean (g_loss)
+    return tf.reduce_mean (g_loss, axis = None)
 
   def _compute_threshold (self, ref_sample) -> tf.Tensor:
     _ , w_ref = ref_sample
     th_loss = tf.zeros_like (w_ref)
-    return tf.reduce_sum (th_loss)
+    return tf.reduce_sum (th_loss, axis = None)
 
   @property
   def discriminator (self) -> tf.keras.Sequential:
@@ -68,3 +69,8 @@ class WGAN (GAN):
   def generator (self) -> tf.keras.Sequential:
     """The generator of the WGAN system."""
     return self._generator
+
+  @property
+  def clip_param (self) -> float:
+    """Clipping parameter for the discriminator weights."""
+    return self._clip_param

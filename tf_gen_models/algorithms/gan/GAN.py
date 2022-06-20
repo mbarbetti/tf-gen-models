@@ -70,10 +70,12 @@ class GAN (tf.keras.Model):
 
     ## data-type control
     if not isinstance (g_updt_per_batch, int):
-      raise TypeError ("The number of generator updates per batch should be an integer.")
+      if isinstance (g_updt_per_batch, float): int (g_updt_per_batch)
+      else: raise TypeError ("The number of generator updates per batch should be an integer.")
 
     if not isinstance (d_updt_per_batch, int):
-      raise TypeError ("The number of discriminator updates per batch should be an integer.")
+      if isinstance (d_updt_per_batch, float): int (d_updt_per_batch)
+      else: raise TypeError ("The number of discriminator updates per batch should be an integer.")
 
     ## data-value control
     if d_updt_per_batch <= 0:
@@ -234,37 +236,37 @@ class GAN (tf.keras.Model):
 
   def _compute_g_loss (self, gen_sample, ref_sample) -> tf.Tensor:
     ## extract features and weights
-    feats_gen, w_gen = gen_sample
-    feats_ref, w_ref = ref_sample
+    input_gen, w_gen = gen_sample
+    input_ref, w_ref = ref_sample
 
     ## noise injection to stabilize GAN training
-    rnd_gen = tf.random.normal ( tf.shape(feats_gen), stddev = 0.1, dtype = feats_gen.dtype )
-    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.1, dtype = feats_ref.dtype )
-    D_gen = tf.cast ( self._discriminator ( feats_gen + rnd_gen ), dtype = feats_gen.dtype )
-    D_ref = tf.cast ( self._discriminator ( feats_ref + rnd_ref ), dtype = feats_ref.dtype )
+    rnd_gen = tf.random.normal ( tf.shape (input_gen), stddev = 0.1, dtype = input_gen.dtype )
+    rnd_ref = tf.random.normal ( tf.shape (input_ref), stddev = 0.1, dtype = input_ref.dtype )
+    D_gen = tf.cast ( self._discriminator (input_gen + rnd_gen), dtype = input_gen.dtype )
+    D_ref = tf.cast ( self._discriminator (input_ref + rnd_ref), dtype = input_ref.dtype )
 
     ## loss computation
-    g_loss = w_ref * tf.math.log ( tf.clip_by_value (D_ref, 1e-12, 1.) ) + \
-             w_gen * tf.math.log ( tf.clip_by_value (1 - D_gen, 1e-12, 1.) )
-    return tf.reduce_mean (g_loss)
+    g_loss = w_ref * tf.math.log ( tf.clip_by_value ( D_ref       , 1e-12 , 1.0 ) ) + \
+             w_gen * tf.math.log ( tf.clip_by_value ( 1.0 - D_gen , 1e-12 , 1.0 ) )
+    return tf.reduce_mean (g_loss, axis = None)
 
   def _compute_threshold (self, ref_sample) -> tf.Tensor:
     ## extract features and weights
-    feats_ref, w_ref = ref_sample
+    input_ref, w_ref = ref_sample
 
     ## noise injection to stabilize GAN training
-    rnd_ref = tf.random.normal ( tf.shape(feats_ref), stddev = 0.1, dtype = feats_ref.dtype )
-    D_ref = tf.cast ( self._discriminator ( feats_ref + rnd_ref ), dtype = feats_ref.dtype )
+    rnd_ref = tf.random.normal ( tf.shape (input_ref), stddev = 0.1, dtype = input_ref.dtype )
+    D_ref = tf.cast ( self._discriminator (input_ref + rnd_ref), dtype = input_ref.dtype )
 
     ## split features and weights
-    batch_size = tf.cast ( tf.shape(feats_ref)[0] / 2, tf.int32 )
+    batch_size = tf.cast ( tf.shape(input_ref)[0] / 2, tf.int32 )
     D_ref_1, D_ref_2 = D_ref[:batch_size], D_ref[batch_size:batch_size*2]
     w_ref_1, w_ref_2 = w_ref[:batch_size], w_ref[batch_size:batch_size*2]
 
     ## threshold loss computation
-    th_loss = w_ref_1 * tf.math.log ( tf.clip_by_value (D_ref_1, 1e-12, 1.) ) + \
-              w_ref_2 * tf.math.log ( tf.clip_by_value (1 - D_ref_2, 1e-12, 1.) )
-    return tf.reduce_mean (th_loss)
+    th_loss = w_ref_1 * tf.math.log ( tf.clip_by_value ( D_ref_1       , 1e-12 , 1.0 ) ) + \
+              w_ref_2 * tf.math.log ( tf.clip_by_value ( 1.0 - D_ref_2 , 1e-12 , 1.0 ) )
+    return tf.reduce_mean (th_loss, axis = None)
 
   def generate (self, X = None, batch_size = None) -> tf.Tensor:
     ## data-value control
@@ -323,6 +325,16 @@ class GAN (tf.keras.Model):
   def g_lr0 (self) -> float:
     """Initial value for generator learning rate."""
     return self._g_lr0
+
+  @property
+  def g_updt_per_batch (self) -> int:
+    """Number of generator updates per batch."""
+    return self._g_updt_per_batch
+
+  @property
+  def d_updt_per_batch (self) -> int:
+    """Number of discriminator updates per batch."""
+    return self._d_updt_per_batch
 
   @property
   def metrics (self) -> list:
