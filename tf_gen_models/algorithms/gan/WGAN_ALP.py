@@ -65,7 +65,7 @@ class WGAN_ALP (GAN):
     d_loss = tf.reduce_mean ( w_gen * D_gen - w_ref * D_ref , axis = None )
 
     ## initial virtual adversarial direction
-    r_k = tf.random.uniform ( shape  = tf.shape(input_ref) , 
+    r_k = tf.random.uniform ( shape  = tf.shape(input_ref)[1:] , 
                               minval = 0.0 , 
                               maxval = 1.0 , 
                               dtype  = input_ref.dtype )
@@ -83,13 +83,14 @@ class WGAN_ALP (GAN):
       ## approximation of virtual adversarial direction
       D_gen_pert = tf.cast ( self._discriminator (input_gen_pert), dtype = input_gen.dtype )
       D_ref_pert = tf.cast ( self._discriminator (input_ref_pert), dtype = input_ref.dtype )
-      diff = tf.abs ( tf.concat ( [D_gen, D_ref], axis = 0 ) - \
-                      tf.concat ( [D_gen_pert, D_ref_pert], axis = 0 ) )
-      r_k = tf.gradients ( tf.reduce_mean (diff, axis = None) , r_k )[0]
+      diff = tf.abs ( tf.concat ( [ D_gen      , D_ref      ] , axis = 0 ) - \
+                      tf.concat ( [ D_gen_pert , D_ref_pert ] , axis = 0 ) )
+      diff = tf.reduce_mean ( diff, axis = None )
+      r_k = tf.gradients ( diff, [r_k] ) [0]
       r_k /= tf.norm ( r_k , axis = None )
 
     ## virtual adversarial direction
-    epsilon = self._epsilon_sampler ( shape = tf.shape(input_ref), dtype = input_ref.dtype )
+    epsilon = self._epsilon_sampler ( shape = tf.shape(input_ref)[1:], dtype = input_ref.dtype )
     r_adv = epsilon * r_k
 
     ## adversarial perturbation of input tensors
@@ -103,8 +104,8 @@ class WGAN_ALP (GAN):
     ## adversarial Lipschitz penalty correction
     D_gen_pert = tf.cast ( self._discriminator (input_gen_pert), dtype = input_gen.dtype )
     D_ref_pert = tf.cast ( self._discriminator (input_ref_pert), dtype = input_ref.dtype )
-    diff = tf.abs ( tf.concat ( [D_gen, D_ref], axis = 0 ) - \
-                    tf.concat ( [D_gen_pert, D_ref_pert], axis = 0 ) )
+    diff = tf.abs ( tf.concat ( [ D_gen      , D_ref      ] , axis = 0 ) - \
+                    tf.concat ( [ D_gen_pert , D_ref_pert ] , axis = 0 ) )
     alp_term = tf.math.maximum ( diff / tf.norm ( r_adv, axis = None ) - self._lp_const, 0.0 )   # one-side penalty
     alp_term = self._adv_lp_penalty * tf.reduce_mean (alp_term, axis = None)   # adversarial Lipschitz penalty
     d_loss += alp_term ** 2
@@ -176,8 +177,8 @@ class WGAN_ALP (GAN):
       raise TypeError ("The epsilon sampler should be passed as a lambda function.")
 
     ## data-value control
-    func_args = func.__code__.co_varnames
-    if (len(func_args) != 2) or (func_args[0] != "shape") or (func_args[1] != "dtype"): 
+    args = func.__code__.co_varnames
+    if (len(args) != 2) or ("shape" not in args) or ("dtype" not in args): 
       raise ValueError ( f"The lambda function for the epsilon sampler "
                          f"should have only ('shape', 'dtype') as arguments." )
 
