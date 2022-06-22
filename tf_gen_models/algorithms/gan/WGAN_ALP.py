@@ -74,11 +74,11 @@ class WGAN_ALP (GAN):
     for _ in range(self._v_adv_dir_updt):
       ## adversarial perturbation of input tensors
       input_gen_pert = tf.clip_by_value ( input_gen + self._xi * r_k , 
-                                          clip_value_min = tf.reduce_min (input_gen) ,
-                                          clip_value_max = tf.reduce_max (input_gen) )
+                                          clip_value_min = tf.reduce_min (input_gen, axis = 0) ,
+                                          clip_value_max = tf.reduce_max (input_gen, axis = 0) )
       input_ref_pert = tf.clip_by_value ( input_ref + self._xi * r_k , 
-                                          clip_value_min = tf.reduce_min (input_ref) ,
-                                          clip_value_max = tf.reduce_max (input_ref) )
+                                          clip_value_min = tf.reduce_min (input_ref, axis = 0) ,
+                                          clip_value_max = tf.reduce_max (input_ref, axis = 0) )
 
       ## approximation of virtual adversarial direction
       D_gen_pert = tf.cast ( self._discriminator (input_gen_pert), dtype = input_gen.dtype )
@@ -95,11 +95,11 @@ class WGAN_ALP (GAN):
 
     ## adversarial perturbation of input tensors
     input_gen_pert = tf.clip_by_value ( input_gen + r_adv , 
-                                        clip_value_min = tf.reduce_min (input_gen) ,
-                                        clip_value_max = tf.reduce_max (input_gen) )
+                                        clip_value_min = tf.reduce_min (input_gen, axis = 0) ,
+                                        clip_value_max = tf.reduce_max (input_gen, axis = 0) )
     input_ref_pert = tf.clip_by_value ( input_ref + r_adv , 
-                                        clip_value_min = tf.reduce_min (input_ref) ,
-                                        clip_value_max = tf.reduce_max (input_ref) )
+                                        clip_value_min = tf.reduce_min (input_ref, axis = 0) ,
+                                        clip_value_max = tf.reduce_max (input_ref, axis = 0) )
 
     ## adversarial Lipschitz penalty correction
     D_gen_pert = tf.cast ( self._discriminator (input_gen_pert), dtype = input_gen.dtype )
