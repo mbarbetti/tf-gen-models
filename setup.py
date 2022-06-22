@@ -25,7 +25,7 @@ def requirements():
 setup (
         name = "tf-gen-models",
         version = __version__,
-        description  = "Ready to use implementations of state-of-the-art generative models in TensorFlow",
+        description  = "Ready to use implementations of state-of-the-art generative models in TensorFlow 2",
         long_description = readme(),
         long_description_content_type = "text/markdown",
         url = "https://github.com/mbarbetti/tf-gen-models",
@@ -34,7 +34,7 @@ setup (
         maintainer = "Matteo Barbetti",
         maintainer_email = "matteo.barbetti@fi.infn.it",
         license = "MIT",
-        keywords = ["machine-learning", "deep-learning", "tensorflow", "generative-models"],
+        keywords = ["machine-learning", "deep-learning", "tensorflow", "generative-models", "gan"],
         packages = find_packages(),
         package_data = {},
         include_package_data = True,

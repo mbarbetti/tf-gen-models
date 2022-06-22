@@ -3,7 +3,7 @@
 </div>
 
 <h3 align="center">
-  <em>Ready to use implementations of state-of-the-art generative models in TensorFlow</em>
+  <em>Ready to use implementations of state-of-the-art generative models in TensorFlow 2</em>
 </h3>
 
 <p align="center">
