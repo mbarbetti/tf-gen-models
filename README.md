@@ -48,8 +48,9 @@ pip install tf-gen-models
 |                 Generative models                 | Implementation | Notebooks | Trends |
 |                :-----------------:                |:--------------:|:---------:|:------:|
 | <a href="#Generative Aversarial Networks">GAN</a> |       ✔️      |     🛠️    |        |
-| <a href="#Variational Autoencoder">VAE</a>        |       ❌      |     ❌    |        |
+| <a href="#Variational Autoencoders">VAE</a>       |       ❌      |     ❌    |        |
 | <a href="#Normalizing Flows">Norm Flow</a>        |       ❌      |     ❌    |        |
+| <a href="#Diffusion Models">Diffusion</a>         |       ❌      |     ❌    |        |
 
 ### Generative Adversarial Networks
 
@@ -64,11 +65,15 @@ pip install tf-gen-models
 
 *Referring to the **conditional version** of GANs proposed in [arXiv:1411.1784](https://arxiv.org/abs/1411.1784).
 
-### Variational Autoencoder
+### Variational Autoencoders
+
+_Planned for release v0.1.0_
+
+### Normalizing Flows
 
 _Planned for release v0.2.0_
 
-### Normalizing Flows
+### Diffusion Models
 
 _Planned for release v0.2.0_
 
